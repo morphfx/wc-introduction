@@ -3,6 +3,9 @@ An introduction to  Web Components, a recent development in web technology (with
 
 # Steps
 
-## Step 1
+## [Step 1](/step-01)
+A basic Html page.
 
 ## Step 2
+
+An Html page including a custom element that hasn't yet been defined.
