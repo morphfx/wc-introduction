@@ -30,6 +30,9 @@ An introduction to  Web Components, a recent development in web technology (with
 * Handling dynamic changes to the attributes
 
 ## [Step 8](/step-08)
+* Improving on dynamic changes
+
+## [Step 9](/step-09)
 * Quick demonstration of the re-useability of the web-component
 
 ## [Step Let It Snow](/step-let-it-snow)

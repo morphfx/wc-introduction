@@ -12,6 +12,10 @@ class MyElement extends HTMLElement {
         console.log("MyElement constructed!");
     }
 
+    static get observedAttributes() {
+        return [ 'from', 'to' ];
+    }
+
     connectedCallback() {
         console.log("Connected");
 
@@ -31,8 +35,8 @@ class MyElement extends HTMLElement {
 
         html+='<style>:host { width: 300px; display: inline-block; text-align: center; background-color: #c0c0ff; margin: 8px; }</style>';
         
-        html+= '<h2>'+this._to+'</h2>';
-        html+='<h2>Merry Christmas</h2>';
+        html+= '<h2 id="to">'+this._to+'</h2>';
+        html+="<h2>Merry Christmas</h2>";
 
         html+='<svg viewbox="0 0 100 100">';
         html+='  <g>';
@@ -41,10 +45,27 @@ class MyElement extends HTMLElement {
         html+='</g>';
         html+='</svg>';
 
-        html+='<h1>From</h1>';
-        html+='<h2>'+this._from+'</h2>';
+        html+="<h1>From</h1>";
+        html+='<h2 id="from">'+this._from+'</h2>';
 
         this._shadow.innerHTML = html;
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        console.log("Attribute: "+name+" has changed from "+oldValue+" to "+newValue);
+        if(!this._shadow) return; // shadow dom doesn't exist yet!
+
+        switch(name) {
+            case 'from':
+                this._from = newValue;
+                this._shadow.getElementById("from").innerHTML = this._from;
+                break;
+            case 'to':
+                this._to = newValue;
+                this._shadow.getElementById("to").innerHTML = this._to;
+                break;
+        }
+
     }
 
 }
