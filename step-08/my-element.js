@@ -55,7 +55,8 @@ class MyElement extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         console.log("Attribute: "+name+" has changed from "+oldValue+" to "+newValue);
-        if(!this._shadow) return; // shadow dom doesn't exist yet!
+
+        // if(!this._shadow) return; // shadow dom doesn't exist yet!
 
         switch(name) {
             case 'from':
